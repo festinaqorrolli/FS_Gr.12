@@ -1,1 +1,1 @@
-# FS_Gr.12
+Algoritmi four square 
