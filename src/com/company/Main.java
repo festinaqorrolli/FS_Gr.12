@@ -23,7 +23,7 @@ public class Main {
         key_2 = in.next();
 
         String process;
-        while(true) {
+        while (true) {
             System.out.print("Type 'E' to encrypt or 'D' to decrypt: ");
             process = in.next();
 
@@ -34,10 +34,23 @@ public class Main {
             }
         }
 
-        if(process.equals("E")) {
+        System.out.println("Character to remove 1: " + remove);
+        System.out.println("Key 1: " + key_1);
+        System.out.println("Key 2: " + key_2);
+
+        //largojme(fshime) duplikate nga celsi
+        String filtered_key_1 = removeDuplicate(key_1);
+        String filtered_key_2 = removeDuplicate(key_1);
+
+        System.out.println("Filtered key 1 : " + filtered_key_1);
+        System.out.println("Filtered key 2 : " + filtered_key_2);
+
+
+        if (process.equals("E")) {
             // E per enkriptim
             encrypt(plot, plainText);
         }
+    }
 
         private static void encrypt(char[][] plot, String plainText) {
             if (plainText.length() %2 !=0)
@@ -94,6 +107,45 @@ public class Main {
             System.out.println("Encrypted Text: " + encryptedText);
         }
 
+        //mbushja =  mbushja e array ne lenth 25
 
+        public static void plotAlphabets(char[] plot, char remove) {
+            int cursor = 0;
+            for (int i =0; i<plot.length;i++) {
+                if ((char)('A' + i) != remove) {
+                    plot[i] = (char)  ('A'  + cursor);
+                }
+                else {
+                    cursor++;
+                    plot[i] = (char) ('A' + cursor);
+                }
+                cursor++;
+            }
+        }
+
+        //largimi ose fshirja e duplikateve dhe filtrimi i stringut
+        public  static String removeDuplicate(String string) {
+
+            char[] characters = string.toCharArray();
+            String filterd = "";
+            // iiterojme ne secilin karakter te arry
+            for (int i=0;i<characters.length;i++) {
+                boolean isReapeated = false;
+                for (int j=0; j < i; j++) {
+                    // krahasojme nje karakter me te gjtha te tjerat
+                    if (characters[i] ==characters[j]) {
+                        isReapeated = true;
+                        break;
+                    }
+                }
+                // nese karakteri nuk perseritet shto ne dalje
+                if (!isReapeated) {
+                    filterd = filterd + characters[i];
+                }
+            }
+            //kthe stringun e filtruar
+            return filterd;
+        }
     }
 }
+
