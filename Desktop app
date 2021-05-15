@@ -1,0 +1,93 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Desktop implements ActionListener {
+
+
+
+
+    public static void main(String[] args) {
+        JPanel panel = new JPanel();
+        JFrame frame = new JFrame();
+        frame.setSize(300, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        //First key
+        panel.setLayout(null);
+        FirstKey = new JLabel("First Key");
+        FirstKey.setBounds(10, 20, 80, 25);
+        panel.add(FirstKey);
+
+        First_Key = new JTextField(20);
+        First_Key.setBounds(100, 20, 165, 25);
+        panel.add(First_Key);
+
+
+        //Second Key
+        panel.setLayout(null);
+        SecondKey = new JLabel("Second Key");
+        SecondKey.setBounds(10, 50, 80, 25);
+        panel.add(SecondKey);
+
+        Second_Key = new JTextField(20);
+        Second_Key.setBounds(100, 50, 165, 25);
+        panel.add(Second_Key);
+
+
+        //Encrypt Button
+        Encrypt = new JButton("Encrypt");
+        Encrypt.setBounds(10, 100, 80, 25);
+        Encrypt.addActionListener(new Desktop());
+        panel.add(Encrypt);
+
+
+        //Decrypt Button
+        Decrypt = new JButton("Decrypt");
+        Decrypt.setBounds(185, 100, 80, 25);
+        Decrypt.addActionListener(new Desktop());
+        panel.add(Decrypt);
+
+
+        //PlainText
+        panel.setLayout(null);
+        PlainText = new JLabel("PlainText");
+        PlainText.setBounds(10, 150, 80, 25);
+        panel.add(PlainText);
+
+        Plain_Text = new JTextField(20);
+        Plain_Text.setBounds(100, 150, 165, 25);
+        panel.add(Plain_Text);
+
+
+        //CipherText
+        panel.setLayout(null);
+        CipherText = new JLabel("CipherText");
+        CipherText.setBounds(10, 180, 80, 25);
+        panel.add(CipherText);
+
+        Cipher_Text = new JTextField(20);
+        Cipher_Text.setBounds(100, 180, 165, 25);
+        panel.add(Cipher_Text);
+
+
+        //Teksti enkriptuar
+        TekstiEnkriptuar=new JLabel("");
+        TekstiEnkriptuar.setBounds(20,210,300,25);
+        panel.add(TekstiEnkriptuar);
+
+
+        //Teksti dekriptuar
+        TekstiDekriptuar=new JLabel("");
+        TekstiDekriptuar.setBounds(20,240,300,25);
+        panel.add(TekstiDekriptuar);
+
+
+        frame.setVisible(true);
+        frame.add(panel);
+
+
+    }
+
+
