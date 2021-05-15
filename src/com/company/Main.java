@@ -45,6 +45,10 @@ public class Main {
         System.out.println("Filtered key 1 : " + filtered_key_1);
         System.out.println("Filtered key 2 : " + filtered_key_2);
 
+        plotAlphabets(plot[0], remove);
+        plotKey(plot[1], filtered_key_1, remove);
+        plotKey(plot[2], filtered_key_2, remove);
+
 
         if (process.equals("E")) {
             // E per enkriptim
@@ -145,6 +149,43 @@ public class Main {
             }
             //kthe stringun e filtruar
             return filterd;
+        }
+
+    private static void plotKey(char[] plot, String key, char remove) {
+        int cursor = 0;
+        char[] ckey = key.toCharArray(); // konvertojme  String ne varg char
+
+        // mbushim celesin
+        for (int i = 0; i < ckey.length; i++) {
+            plot[i] = ckey[i];
+        }
+
+        for (int i = ckey.length; i < plot.length; i++) {
+
+            if((char) ('A' + cursor) == remove) {
+                // nëse shkronja aktuale është ajo që hiqet, atëherë anashkaloni
+                cursor++;
+            }
+
+            int checks = 2; // numri i kontrolleve
+            for (int j = 0; j < checks; j++) {
+                for (int k = 0; k < ckey.length; k++) {
+                    // iterimi me celes dhe krahasimi i secilit karater aktual
+                    if(ckey[k] == (char) ('A' + cursor)) {
+                        cursor++;
+                        break;
+                    }
+                }
+            }
+
+            if((char) ('A' + cursor) == remove) { // kontrolla prap ose rikontroll
+                // nëse shkronja aktuale është ajo që hiqet, atëherë anashkaloni
+                cursor++;
+            }
+
+            plot[i] = (char) ('A' + cursor);
+            cursor++;
+
         }
     }
 }
