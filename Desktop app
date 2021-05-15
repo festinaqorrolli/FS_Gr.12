@@ -105,3 +105,21 @@ public class Desktop implements ActionListener {
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String key1=First_Key.getText();
+        String key2=Second_Key.getText();
+        String plaintext=Plain_Text.getText();
+        String ciphertext=Cipher_Text.getText();
+
+        if(e.getSource()==Encrypt){
+            TekstiEnkriptuar.setText("Teksti enkriptuar");
+
+        }
+        else{
+            TekstiDekriptuar.setText("Teksti dekriptuar");
+        }
+
+    }
+}
+
