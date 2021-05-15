@@ -4,6 +4,20 @@ import java.awt.event.ActionListener;
 
 public class Desktop implements ActionListener {
 
+        
+            private static JLabel FirstKey;
+    private static JTextField First_Key;
+    private static JLabel SecondKey;
+    private static JTextField Second_Key;
+    private static JButton Encrypt;
+    private static JButton Decrypt;
+    private static JLabel PlainText;
+    private static JTextField Plain_Text;
+    private static JLabel CipherText;
+    private static JTextField Cipher_Text;
+    private static JLabel TekstiEnkriptuar;
+    private static JLabel TekstiDekriptuar;
+
 
 
 
