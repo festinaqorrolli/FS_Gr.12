@@ -32,6 +32,11 @@ public class Main {
                 plainText = in.next();
                 break;
             }
+            if (process.equals("D")) {
+                System.out.print("Input  Text: ");
+                encryptedText = in.next();
+                break;
+            }
         }
 
         System.out.println("Character to remove 1: " + remove);
@@ -40,7 +45,7 @@ public class Main {
 
         //largojme(fshime) duplikate nga celsi
         String filtered_key_1 = removeDuplicate(key_1);
-        String filtered_key_2 = removeDuplicate(key_1);
+        String filtered_key_2 = removeDuplicate(key_2);
 
         System.out.println("Filtered key 1 : " + filtered_key_1);
         System.out.println("Filtered key 2 : " + filtered_key_2);
@@ -49,10 +54,20 @@ public class Main {
         plotKey(plot[1], filtered_key_1, remove);
         plotKey(plot[2], filtered_key_2, remove);
 
+        // kontrollo mbushjen
+        System.out.println("Q1/Q4: " + Arrays.toString(plot[0]));
+        System.out.println("Q2: " + Arrays.toString(plot[1]));
+        System.out.println("Q3: " + Arrays.toString(plot[2]));
+
 
         if (process.equals("E")) {
             // E per enkriptim
             encrypt(plot, plainText);
+        }
+
+        if (process.equals("D")) {
+            //dekriptimi
+            decrypt(plot, encryptedText);
         }
     }
 
@@ -187,6 +202,55 @@ public class Main {
             cursor++;
 
         }
+    }
+    private static void decrypt(char[][] plot, String encryptedText) {
+
+        if(encryptedText.length() %2 !=0)
+            encryptedText = encryptedText + "X";
+
+        char[] pairs = new char[2];
+        String plainText = "";
+        String[] pEncryptText = new String[encryptedText.length() / 2 ];
+
+        int cursor = 0;
+        for (int i=0;i< pEncryptText.length;i++) {
+            pEncryptText[i] = ""+ encryptedText.charAt(cursor) + encryptedText.charAt(cursor + 1);
+            cursor = cursor + 2;//hapi me nga 2
+        }
+
+        System.out.println("Pairs : " + Arrays.toString(pEncryptText));
+
+        for (int i=0;i<pEncryptText.length;i++) {
+            int column_a = 0;
+            int row_a = 0;
+            int column_b = 0;
+            int row_b = 0;
+
+            // krijo ciftin
+            pairs[0] = pEncryptText[i].charAt(0);
+            pairs[1] = pEncryptText[i].charAt(1);
+
+            //gjeje ciftin ne cels ne NormalAlfabet
+            for (int j =0;j< plot[0].length;j++) {
+                //gjeje ciftin e pare nga alfabeti
+                if (pairs[0] == plot[1][j]) {
+                    //mbushja eshte 5 nga 25 dhe na nevojitet me gjete rreshtin, ne e konvertojme ate 5*5(pjestu 5)
+                    row_a = (j/5) * 5;
+                    //me gjet kolonen na nevojitet mbetja, ne e modelojme me 5 ose (j % 5)
+                    column_a = j % 5;
+                }
+
+                //gjeje ciftin e 2 nga alfabeti
+                if (pairs[1] == plot[2][j]) {
+                    row_b = (j / 5) * 5;
+                    column_b = j % 5;
+                }
+            }
+            plainText += plot[0][row_a + column_b];
+            plainText += plot[0][row_b + column_a];
+        }
+        //Teksti i dekriptuar
+        System.out.println("Decrypted text : " + plainText);
     }
 }
 
