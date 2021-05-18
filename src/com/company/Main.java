@@ -55,9 +55,9 @@ public class Main {
         plotKey(plot[2], filtered_key_2, remove);
 
         // kontrollo mbushjen
-        System.out.println("Q1/Q4: " + Arrays.toString(plot[0]));
-        System.out.println("Q2: " + Arrays.toString(plot[1]));
-        System.out.println("Q3: " + Arrays.toString(plot[2]));
+//        System.out.println("Q1/Q4: " + Arrays.toString(plot[0]));
+//        System.out.println("Q2: " + Arrays.toString(plot[1]));
+//        System.out.println("Q3: " + Arrays.toString(plot[2]));
 
 
         if (process.equals("E")) {
